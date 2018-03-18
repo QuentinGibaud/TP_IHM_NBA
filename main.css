@@ -87,3 +87,35 @@ nav a:hover {
     margin: 50px 0;
 }
 
+.navHorizontal {
+	margin-left: 0;
+	margin-top: 0;
+	width: 250px;
+	margin-bottom: 0;
+	background-color: #80FFFF;
+	visibility: visible;
+    height: 100%;
+}
+
+.blocNavHeaderSearch {
+	position:relative;
+	background-color: red;
+	visibility: visible;
+    color: white;
+    text-align: center;
+}
+
+.blocNavHeaderList {
+	position:relative;
+	background-color: blue;
+	visibility: visible;
+    color: white;
+    text-align: center;
+}
+
+.blocNavElement {
+	position:relative;
+	color:black;
+	visibility: visible;
+}
+
