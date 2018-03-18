@@ -1,0 +1,89 @@
+html, body {
+    background: #F5F5F5; font: 18px/1.5 sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto -15px;
+    display: block;
+}
+
+h1 {
+    line-height: 1.2; margin: 0 0 .5em;
+    font-size: 36px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+#home-wrapper{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+header {
+    flex-direction: column;
+    background-image: linear-gradient(#294AB7, #AFAFAF);
+    background-size: auto;
+    text-align: center;
+    padding-top: 1em;
+}
+
+.img-banner {
+    text-align: center;
+    height: 110px;
+}
+
+.logo{
+    height: 100%;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.header-title {
+    font-weight: bold;
+    font-size: 30px;
+    padding: 0.5em;
+    margin: 0px;
+}
+
+nav {
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #656565;
+    margin: auto 0;
+}
+
+nav a {
+    display: inline-block;
+    margin: 0px;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #000000;
+}
+
+
+.home-title{
+    text-align: center;
+    padding: 0em 0 2.5em;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.container{
+    text-align: justify;
+    padding: 2em;
+    height: 100%;
+}
+
+.btn-container{
+    text-align: center;
+    margin: 50px 0;
+}
+
