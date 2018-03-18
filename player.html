@@ -26,8 +26,19 @@
 			</div>
 
 			<div class="blocNavHeaderList">List of Players</div>
-			<div class="blocNavElement">
-                
+			<div id="blocNavElementList" class="blocNavElement">
+                <script type="text/javascript">
+                    d3.csv("NBA_data.csv", function(data){
+                                                        d3.select("#blocNavElementList").selectAll("p")
+                                                          .data(data)
+                                                          .enter()
+                                                          .append("p")
+                                                          .style("margin", "0")  
+                                                          .append("a")
+                                                          .text(function(d){return d.Name;})
+                                                          .style("font-size", "15px");
+                                                    });
+                </script>
 			</div>
 		</div>
     </body>

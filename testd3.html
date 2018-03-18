@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>NBA is Great : Test for loading data</title>
+        <script type="text/javascript" src="d3/d3.v3.js"></script>
+        <link rel="icon" type="image/x-icon" href="img/NBA-logo.jpg" />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <div class="img-banner">
+                <img class="logo" src="img/NBA-logo.jpg" alt="NBA Logo"/>
+            </div>
+            <h1 class="header-title">NBA is Great : Welcome to our wonderful interface</h1>
+        </header>
+        <nav>
+            <a class="menu" id="home_page" href="index.html">Home</a>
+            <a class="menu" id="player_page" href="player.html">Player</a>
+            <a class="menu" id="team_page" href="team.html">Team</a>
+        </nav>
+        <script type="text/javascript">
+            var dataset = [];
+            dataset = d3.csv("NBA_data.csv", function(data){
+                                        dataset=data;
+                                        dataset.forEach(function(d){
+                                            d.Height = +d.Height;
+                                            d.Weight = +d.Weight;
+                                            d.Age = +d.Age;
+                                            d.Salary = +d.Salary;
+                                            d.Games_played = +d.Games_played;
+                                            d.Minutes = +d.Minutes;
+                                            d.Fields_goals_made = +d.Fields_goals_made;
+                                            d.Fields_goal_attempted = +d.Fields_goal_attempted;
+                                            d.Percent_Fields_goal_made = +d.Percent_Fields_goal_made;
+                                            d.Three_pts_FGM = +d.Three_pts_FGM;
+                                            d.Three_pts_FGA = +d.Three_pts_FGA;
+                                            d.Percent_Three_pts_FG = +d.Percent_Three_pts_FG;
+                                            d.Free_throws_made = +d.Free_throws_made;
+                                            d.Free_throws_attempted = +d.Free_throws_attempted;
+                                            d.Percent_FT = +d.Percent_FT;
+                                            d.Off_rebond = +d.Off_rebond;
+                                            d.Def_rebond = +d.Def_rebond;
+                                            d.Total_rebond = +d.Total_rebond;
+                                            d.Assits = +d.Assits;
+                                            d.Turnover = +d.Turnover;
+                                            d.Steals = +d.Steals;
+                                            d.Blocks = +d.Blocks;
+                                            d.Blocked_fields_goals_attempted = +d.Blocked_fields_goals_attempted;
+                                            d.Personnal_fouls = +d.Personnal_fouls;
+                                            d.Personnal_fouls_drawn = +d.Personnal_fouls_drawn;
+                                            d.Points = +d.Points;
+                                            d.Point_differential_of_the_score = +d.Point_differential_of_the_score;
+                                        });
+                                        return dataset;
+                                    });
+            var dataName = [];
+            for(var i=0; i<dataset.length; i++){
+                dataName.push(dataset[i].Name);
+                }
+            /*d3.csv("NBA_data.csv", function(data){
+                                        data.forEach(function(d){
+                                                        dataName.push(d.Name);
+                                                    });
+                                    });*/
+            var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
+        </script>
+    </body>
+</html>
