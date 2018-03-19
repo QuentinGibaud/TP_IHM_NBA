@@ -55,14 +55,14 @@ function selectTeam(elemID){
     
     var labels = true; // show the text labels beside individual boxplots?
 
-    var margin = {top: 30, right: 50, bottom: 70, left: 50};
-    var  width = 800 - margin.left - margin.right;
+    var margin = {top: 30, right: 100, bottom: 70, left: 100};
+    var  width = 1500 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom;
 	
     var min = Infinity,
         max = -Infinity;
         
-    var col = ['Name','Height','Weight','Age','Salary','Team','Position','Games_played','Minutes',
+    var col = ['Height','Weight','Age','Salary','Games_played','Minutes',
                'Fields_goals_made','Fields_goal_attempted','Percent_Fields_goal_made','Three_pts_FGM','Three_pts_FGA','Percent_Three_pts_FG','Free_throws_made',
                'Free_throws_attempted','Percent_FT','Off_rebond','Def_rebond','Total_rebond','Assits','Turnover','Steals','Blocks','Blocked_fields_goals_attempted',
                'Personnal_fouls','Personnal_fouls_drawn','Points','Point_differential_of_the_score'];
@@ -82,59 +82,56 @@ function selectTeam(elemID){
         }
 
         var data = [];
-        for(i=0 ; i<30 ; i++){
+        for(i=0 ; i<27 ; i++){
             data[i] = [];
         }
         
         // add more rows if your csv file has more columns
 
         // add here the header of the csv file
-        for(j=0 ; j<30 ; j++){
+        for(j=0 ; j<27 ; j++){
             data[j][0] = col[j];
         }
         
         // add more rows if your csv file has more columns
 
-        for(k=0 ; k<30 ; k++){
+        for(k=0 ; k<27 ; k++){
             data[k][1] = [];
         }
   
         dataset.forEach(function(x) {
-            var v1 = Math.floor(0),
-                v2 = Math.floor(x.Height),
-                v3 = Math.floor(x.Weight),
-                v4 = Math.floor(x.Age),
-                v5 = Math.floor(x.Salary),
-                v6 = Math.floor(0),
-                v7 = Math.floor(0),
-                v8 = Math.floor(x.Games_played),
-                v9 = Math.floor(x.Minutes),
-                v10 = Math.floor(x.Fields_goals_made),
-                v11 = Math.floor(x.Fields_goal_attempted),
-                v12 = Math.floor(x.Percent_Fields_goal_made),
-                v13 = Math.floor(x.Three_pts_FGM),
-                v14 = Math.floor(x.Three_pts_FGA),
-                v15 = Math.floor(x.Percent_Three_pts_FG),
-                v16 = Math.floor(x.Free_throws_made),
-                v17 = Math.floor(x.Free_throws_attempted),
-                v18 = Math.floor(x.Percent_FT),
-                v19 = Math.floor(x.Off_rebond),
-                v20 = Math.floor(x.Def_rebond),
-                v21 = Math.floor(x.Total_rebond),
-                v22 = Math.floor(x.Assits),
-                v23 = Math.floor(x.Turnover),
-                v24 = Math.floor(x.Steals),
-                v25 = Math.floor(x.Blocks),
-                v26 = Math.floor(x.Blocked_fields_goals_attempted),
-                v27 = Math.floor(x.Personnal_fouls),
-                v28 = Math.floor(x.Personnal_fouls_drawn),
-                v29 = Math.floor(x.Points),
-                v30 = Math.floor(x.Point_differential_of_the_score);
+            var v1 = Math.floor(x.Height),
+                v2 = Math.floor(x.Weight),
+                v3 = Math.floor(x.Age),
+                v4 = Math.floor(x.Salary),
+                v5 = Math.floor(x.Games_played),
+                v6 = Math.floor(x.Minutes),
+                v7 = Math.floor(x.Fields_goals_made),
+                v8 = Math.floor(x.Fields_goal_attempted),
+                v9 = Math.floor(x.Percent_Fields_goal_made),
+                v10 = Math.floor(x.Three_pts_FGM),
+                v11 = Math.floor(x.Three_pts_FGA),
+                v12 = Math.floor(x.Percent_Three_pts_FG),
+                v13 = Math.floor(x.Free_throws_made),
+                v14 = Math.floor(x.Free_throws_attempted),
+                v15 = Math.floor(x.Percent_FT),
+                v16 = Math.floor(x.Off_rebond),
+                v17 = Math.floor(x.Def_rebond),
+                v18 = Math.floor(x.Total_rebond),
+                v19 = Math.floor(x.Assits),
+                v20 = Math.floor(x.Turnover),
+                v21 = Math.floor(x.Steals),
+                v22 = Math.floor(x.Blocks),
+                v23 = Math.floor(x.Blocked_fields_goals_attempted),
+                v24 = Math.floor(x.Personnal_fouls),
+                v25 = Math.floor(x.Personnal_fouls_drawn),
+                v26 = Math.floor(x.Points),
+                v27 = Math.floor(x.Point_differential_of_the_score);
                 
                 // add more variables if your csv file has more columns
 			
-            var rowMax = Math.max(v1, Math.max(v2, Math.max(v3,v5)));
-            var rowMin = Math.min(v1, Math.min(v2, Math.min(v3,v5)));
+            var rowMax = Math.max(v1, Math.max(v2, Math.max(v3,v4)));
+            var rowMin = Math.min(v1, Math.min(v2, Math.min(v3,v4)));
 
             data[0][1].push(v1);
             data[1][1].push(v2);
@@ -163,9 +160,6 @@ function selectTeam(elemID){
             data[24][1].push(v25);
             data[25][1].push(v26);
             data[26][1].push(v27);
-            data[27][1].push(v28);
-            data[28][1].push(v29);
-            data[29][1].push(v30);
             // add more rows if your csv file has more columns
 		 
             if (rowMax > max) max = rowMax;
