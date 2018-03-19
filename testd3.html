@@ -5,7 +5,7 @@
         <title>NBA is Great : Test for loading data</title>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
         <link rel="icon" type="image/x-icon" href="img/NBA-logo.jpg" />
-        <link href="main.css" rel="stylesheet" type="text/css" />
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header>
@@ -21,7 +21,7 @@
         </nav>
         <script type="text/javascript">
             var dataset = [];
-            dataset = d3.csv("NBA_data.csv", function(data){
+            dataset = d3.csv("data/NBA_data.csv", function(data){
                                         dataset=data;
                                         dataset.forEach(function(d){
                                             d.Height = +d.Height;

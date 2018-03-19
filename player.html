@@ -4,8 +4,9 @@
         <meta charset="UTF-8" />
         <title>NBA is Great : Player page</title>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
+        <script type="text/javascript" src="js/actionPlayer.js"></script>
         <link rel="icon" type="image/x-icon" href="img/NBA-logo.jpg" />
-        <link rel="stylesheet" href="main.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -28,18 +29,21 @@
 			<div class="blocNavHeaderList">List of Players</div>
 			<div id="blocNavElementList" class="blocNavElement">
                 <script type="text/javascript">
-                    d3.csv("NBA_data.csv", function(data){
+                    d3.csv("data/NBA_data.csv", function(data){
                                                         d3.select("#blocNavElementList").selectAll("p")
                                                           .data(data)
                                                           .enter()
                                                           .append("p")
-                                                          .style("margin", "0")  
-                                                          .append("a")
                                                           .text(function(d){return d.Name;})
+                                                          .attr("onclick",function(d){return "selectPlayer('" + d.Name +"');";})
+                                                          .style("margin", "0")  
                                                           .style("font-size", "15px");
                                                     });
                 </script>
 			</div>
+		</div>
+        <div id="Centre">
+            <p>Here you will find all the informations on your favorite player (well, when you will select one ...) !!!</p>
 		</div>
     </body>
 </html>

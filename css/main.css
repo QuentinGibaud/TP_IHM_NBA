@@ -119,3 +119,10 @@ nav a:hover {
 	visibility: visible;
 }
 
+#Centre {
+    position: absolute;
+	left:250px;
+    top: 300px;
+    width: 1650px;
+	visibility: visible;
+}
