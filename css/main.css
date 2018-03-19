@@ -126,3 +126,61 @@ nav a:hover {
     width: 1650px;
 	visibility: visible;
 }
+
+table{
+    border: 1px solid blue;
+    color: darkcyan;
+}
+
+tr{
+    background-color: white;
+    color: darkcyan;
+}
+
+td{
+    border: 1px solid green;
+    color: darkcyan;
+}
+
+th{
+    background-color: dodgerblue;
+    color: white;
+}
+
+.box {
+  font: 10px sans-serif;
+}
+
+.box line,
+.box rect,
+.box circle {
+  fill: steelblue;
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.box .center {
+  stroke-dasharray: 3,3;
+}
+
+.box .outlier {
+  fill: none;
+  stroke: #000;
+}
+
+.axis {
+  font: 12px sans-serif;
+}
+ 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+ 
+.x.axis path { 
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}

@@ -6,6 +6,8 @@ function selectPlayer(elemID){
                                 .append("p")
                                 .text(function(d){if(d.Name == elemID){return "Vous avez choisi le joueur " + d.Name + " qui a " + d.Age + " ans !!!" ;}});
     });*/
+
+    
     d3.csv("data/NBA_data.csv", function (error,data) {
         
         var dataset = [];
@@ -68,7 +70,11 @@ function selectPlayer(elemID){
                            'Fields_goals_made','Fields_goal_attempted','Percent_Fields_goal_made','Three_pts_FGM','Three_pts_FGA','Percent_Three_pts_FG','Free_throws_made',
                            'Free_throws_attempted','Percent_FT','Off_rebond','Def_rebond','Total_rebond','Assits','Turnover','Steals','Blocks','Blocked_fields_goals_attempted',
                            'Personnal_fouls','Personnal_fouls_drawn','Points','Point_differential_of_the_score'];
+        
+        d3.select("#Centre").select("table").remove();
+        
         tabulate(dataset, col);
 
     });
+
 }
