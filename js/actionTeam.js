@@ -1,4 +1,5 @@
 function selectTeam(elemID){
+    
 	
     //Affichage du boxplot avec les goals
     d3.csv("data/NBA_data.csv", function(error, csv) {
