@@ -14,7 +14,7 @@ function selectTeam(elemID){
                     dataset.push(csv[i]);
                 }
         }               
-        var col1 = ['Fields_goals_made','Fields_goal_attempted','Three_pts_FGM','Three_pts_FGA','Free_throws_made','Free_throws_attempted'];
+        var col1 = ['Fields goals made','Fields goal attempted','Three points made','Three points attempted','Free throws made','Free throws attempted'];
         var data1 = [];
         for(i=0 ; i<col1.length ; i++){
             data1[i] = [];
@@ -111,8 +111,7 @@ function selectTeam(elemID){
         .attr("y",  10 )
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
-		.style("font-size", "16px") 
-        .text("Statistics of the team"); 
+		.style("font-size", "16px"); 
         
 
         // Returns a function to compute the interquartile range.
@@ -232,8 +231,7 @@ function selectTeam(elemID){
         .attr("y",  10 )
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
-		.style("font-size", "16px") 
-        .text("Players' Salary"); 
+		.style("font-size", "16px"); 
         
 
         // Returns a function to compute the interquartile range.
@@ -256,7 +254,7 @@ function selectTeam(elemID){
 
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 1500 - margin.left - margin.right;
+        var  width = 500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;
         var min = Infinity,
             max = -Infinity;
@@ -330,7 +328,7 @@ function selectTeam(elemID){
         .attr("y", 0 + (margin.top / 2))
         .attr("text-anchor", "middle")  
         .style("font-size", "18px")  
-        .text("Ages from the team: " + elemID);
+        .text("Ages: " + elemID);
  
         svg.append("g")
         .attr("class", "y axis")
@@ -352,8 +350,7 @@ function selectTeam(elemID){
         .attr("y",  10 )
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
-		.style("font-size", "16px") 
-        .text("Players' age"); 
+		.style("font-size", "16px"); 
         
 
         // Returns a function to compute the interquartile range.
@@ -376,7 +373,7 @@ function selectTeam(elemID){
 
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 1500 - margin.left - margin.right;
+        var  width = 500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;
         var min = Infinity,
             max = -Infinity;
@@ -450,7 +447,7 @@ function selectTeam(elemID){
         .attr("y", 0 + (margin.top / 2))
         .attr("text-anchor", "middle")  
         .style("font-size", "18px")  
-        .text("Height from the team: " + elemID);
+        .text("Height: " + elemID);
  
         svg.append("g")
         .attr("class", "y axis")
@@ -472,8 +469,7 @@ function selectTeam(elemID){
         .attr("y",  10 )
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
-		.style("font-size", "16px") 
-        .text("Players' Height"); 
+		.style("font-size", "16px");
         
 
         // Returns a function to compute the interquartile range.
@@ -496,7 +492,7 @@ function selectTeam(elemID){
 
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 1500 - margin.left - margin.right;
+        var  width = 500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;
         var min = Infinity,
             max = -Infinity;
@@ -570,7 +566,7 @@ function selectTeam(elemID){
         .attr("y", 0 + (margin.top / 2))
         .attr("text-anchor", "middle")  
         .style("font-size", "18px")  
-        .text("Weight from the team: " + elemID);
+        .text("Weight: " + elemID);
  
         svg.append("g")
         .attr("class", "y axis")
@@ -592,8 +588,605 @@ function selectTeam(elemID){
         .attr("y",  10 )
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
-		.style("font-size", "16px") 
-        .text("Players' Weight"); 
+		.style("font-size", "16px"); 
+        
+
+        // Returns a function to compute the interquartile range.
+        function iqr(k) {
+            return function(d, i) {
+            var q1 = d.quartiles[0],
+                q3 = d.quartiles[2],
+                iqr = (q3 - q1) * k,
+                i = -1,
+                j = d.length;
+            while (d[++i] < q1 - iqr);
+            while (d[--j] > q3 + iqr);
+            return [i, j];
+            };
+        }
+    });
+    
+    //Affichage du boxplot avec les games played
+    d3.csv("data/NBA_data.csv", function(error, csv) {
+        var labels = true; // show the text labels beside individual boxplots?
+        var margin = {top: 30, right: 100, bottom: 70, left: 100};
+        var  width = 750 - margin.left - margin.right;
+        var height = 400 - margin.top - margin.bottom;	
+        var min = Infinity,
+            max = -Infinity;
+        var dataset = [];
+        for (var i = 0; i < csv.length; i++){
+                if (csv[i].Team == elemID){;
+                    dataset.push(csv[i]);
+                }
+        }               
+        var col1 = ['Games played'];
+        var data1 = [];
+        for(i=0 ; i<col1.length ; i++){
+            data1[i] = [];
+        }
+        for(j=0 ; j<col1.length ; j++){
+            data1[j][0] = col1[j];
+        }
+        for(k=0 ; k<col1.length ; k++){
+            data1[k][1] = [];
+        }
+        dataset.forEach(function(x) {
+            var v1 = x.Games_played;
+			
+            var rowMax1 = Math.max(v1);
+            var rowMin1 = Math.min(v1);
+
+            data1[0][1].push(v1); 
+		 
+            if (rowMax1 > max) max = rowMax1;
+            if (rowMin1 < min) min = rowMin1;	
+        });
+  
+        var chart = d3.box()
+                      .whiskers(iqr(1.5))
+                      .height(height)	
+                      .domain([min, max])
+                      .showLabels(labels);
+                      
+
+        var svg = d3.select("#Centre").append("svg")
+                                   .attr("width", width + margin.left + margin.right)
+                                   .attr("height", height + margin.top + margin.bottom)
+                                   .attr("class", "box")    
+                                   .append("g")
+                                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var x = d3.scale.ordinal()	   
+		.domain( data1.map(function(d) { console.log(d); return d[0] } ) )	    
+		.rangeRoundBands([0 , width], 0.7, 0.3); 		
+
+        var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+        var y = d3.scale.linear()
+		.domain([min, max])
+		.range([height + margin.top, 0 + margin.top]);
+	
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+        svg.selectAll(".box")	   
+        .data(data1)
+        .enter().append("g")
+		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
+        .call(chart.width(x.rangeBand())); 
+	
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 + (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "18px")  
+        .text("Games played: " + elemID);
+ 
+        svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+		.append("text") // and text1
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .style("font-size", "16px") 
+		  .text("Games played per player");		
+	
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
+        .call(xAxis)
+        .append("text")            
+        .attr("x", (width / 2) )
+        .attr("y",  10 )
+		.attr("dy", ".71em")
+        .style("text-anchor", "middle")
+		.style("font-size", "16px"); 
+        
+
+        // Returns a function to compute the interquartile range.
+        function iqr(k) {
+            return function(d, i) {
+            var q1 = d.quartiles[0],
+                q3 = d.quartiles[2],
+                iqr = (q3 - q1) * k,
+                i = -1,
+                j = d.length;
+            while (d[++i] < q1 - iqr);
+            while (d[--j] > q3 + iqr);
+            return [i, j];
+            };
+        }
+    });
+    
+    //Affichage du boxplot avec les goals
+    d3.csv("data/NBA_data.csv", function(error, csv) {
+        var labels = true; // show the text labels beside individual boxplots?
+        var margin = {top: 30, right: 100, bottom: 70, left: 100};
+        var  width = 750 - margin.left - margin.right;
+        var height = 400 - margin.top - margin.bottom;	
+        var min = Infinity,
+            max = -Infinity;
+        var dataset = [];
+        for (var i = 0; i < csv.length; i++){
+                if (csv[i].Team == elemID){;
+                    dataset.push(csv[i]);
+                }
+        }               
+        var col1 = ['Minutes played'];
+        var data1 = [];
+        for(i=0 ; i<col1.length ; i++){
+            data1[i] = [];
+        }
+        for(j=0 ; j<col1.length ; j++){
+            data1[j][0] = col1[j];
+        }
+        for(k=0 ; k<col1.length ; k++){
+            data1[k][1] = [];
+        }
+        dataset.forEach(function(x) {
+            var v1 = Math.floor(x.Minutes);
+			
+            var rowMax1 = Math.max(v1);
+            var rowMin1 = Math.min(v1);
+
+            data1[0][1].push(v1);
+		 
+            if (rowMax1 > max) max = rowMax1;
+            if (rowMin1 < min) min = rowMin1;	
+        });
+  
+        var chart = d3.box()
+                      .whiskers(iqr(1.5))
+                      .height(height)	
+                      .domain([min, max])
+                      .showLabels(labels);
+                      
+
+        var svg = d3.select("#Centre").append("svg")
+                                   .attr("width", width + margin.left + margin.right)
+                                   .attr("height", height + margin.top + margin.bottom)
+                                   .attr("class", "box")    
+                                   .append("g")
+                                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var x = d3.scale.ordinal()	   
+		.domain( data1.map(function(d) { console.log(d); return d[0] } ) )	    
+		.rangeRoundBands([0 , width], 0.7, 0.3); 		
+
+        var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+        var y = d3.scale.linear()
+		.domain([min, max])
+		.range([height + margin.top, 0 + margin.top]);
+	
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+        svg.selectAll(".box")	   
+        .data(data1)
+        .enter().append("g")
+		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
+        .call(chart.width(x.rangeBand())); 
+	
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 + (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "18px")  
+        .text("Minutes played: " + elemID);
+ 
+        svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+		.append("text") // and text1
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .style("font-size", "16px") 
+		  .text("Minutes played per player");		
+	
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
+        .call(xAxis)
+        .append("text")            
+        .attr("x", (width / 2) )
+        .attr("y",  10 )
+		.attr("dy", ".71em")
+        .style("text-anchor", "middle")
+		.style("font-size", "16px"); 
+        
+
+        // Returns a function to compute the interquartile range.
+        function iqr(k) {
+            return function(d, i) {
+            var q1 = d.quartiles[0],
+                q3 = d.quartiles[2],
+                iqr = (q3 - q1) * k,
+                i = -1,
+                j = d.length;
+            while (d[++i] < q1 - iqr);
+            while (d[--j] > q3 + iqr);
+            return [i, j];
+            };
+        }
+    });
+    
+    //Affichage du boxplot avec les rebonds
+    d3.csv("data/NBA_data.csv", function(error, csv) {
+        var labels = true; // show the text labels beside individual boxplots?
+        var margin = {top: 30, right: 100, bottom: 70, left: 100};
+        var  width = 1500 - margin.left - margin.right;
+        var height = 400 - margin.top - margin.bottom;	
+        var min = Infinity,
+            max = -Infinity;
+        var dataset = [];
+        for (var i = 0; i < csv.length; i++){
+                if (csv[i].Team == elemID){;
+                    dataset.push(csv[i]);
+                }
+        }               
+        var col1 = ['Offensive rebond','Defensive rebond','Total'];
+        var data1 = [];
+        for(i=0 ; i<col1.length ; i++){
+            data1[i] = [];
+        }
+        for(j=0 ; j<col1.length ; j++){
+            data1[j][0] = col1[j];
+        }
+        for(k=0 ; k<col1.length ; k++){
+            data1[k][1] = [];
+        }
+        dataset.forEach(function(x) {
+            var v1 = x.Off_rebond;
+            var v2 = x.Def_rebond;
+            var v3 = x.Total_rebond;
+			
+            var rowMax1 = Math.max(v1, Math.max(v2,v3));
+            var rowMin1 = Math.min(v1, Math.min(v2,v3));
+
+            data1[0][1].push(v1);
+            data1[1][1].push(v2);
+            data1[2][1].push(v3);
+		 
+            if (rowMax1 > max) max = rowMax1;
+            if (rowMin1 < min) min = rowMin1;	
+        });
+  
+        var chart = d3.box()
+                      .whiskers(iqr(1.5))
+                      .height(height)	
+                      .domain([min, max])
+                      .showLabels(labels);
+                      
+
+        var svg = d3.select("#Centre").append("svg")
+                                   .attr("width", width + margin.left + margin.right)
+                                   .attr("height", height + margin.top + margin.bottom)
+                                   .attr("class", "box")    
+                                   .append("g")
+                                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var x = d3.scale.ordinal()	   
+		.domain( data1.map(function(d) { console.log(d); return d[0] } ) )	    
+		.rangeRoundBands([0 , width], 0.7, 0.3); 		
+
+        var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+        var y = d3.scale.linear()
+		.domain([min, max])
+		.range([height + margin.top, 0 + margin.top]);
+	
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+        svg.selectAll(".box")	   
+        .data(data1)
+        .enter().append("g")
+		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
+        .call(chart.width(x.rangeBand())); 
+	
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 + (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "18px")  
+        .text("Rebonds caught: " + elemID);
+ 
+        svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+		.append("text") // and text1
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .style("font-size", "16px") 
+		  .text("Number of rebonds successful");		
+	
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
+        .call(xAxis)
+        .append("text")            
+        .attr("x", (width / 2) )
+        .attr("y",  10 )
+		.attr("dy", ".71em")
+        .style("text-anchor", "middle")
+		.style("font-size", "16px"); 
+        
+
+        // Returns a function to compute the interquartile range.
+        function iqr(k) {
+            return function(d, i) {
+            var q1 = d.quartiles[0],
+                q3 = d.quartiles[2],
+                iqr = (q3 - q1) * k,
+                i = -1,
+                j = d.length;
+            while (d[++i] < q1 - iqr);
+            while (d[--j] > q3 + iqr);
+            return [i, j];
+            };
+        }
+    });
+    
+    //Affichage du boxplot avec les fautes
+    d3.csv("data/NBA_data.csv", function(error, csv) {
+        var labels = true; // show the text labels beside individual boxplots?
+        var margin = {top: 30, right: 100, bottom: 70, left: 100};
+        var  width = 1500 - margin.left - margin.right;
+        var height = 400 - margin.top - margin.bottom;	
+        var min = Infinity,
+            max = -Infinity;
+        var dataset = [];
+        for (var i = 0; i < csv.length; i++){
+                if (csv[i].Team == elemID){;
+                    dataset.push(csv[i]);
+                }
+        }               
+        var col1 = ['Personnal fouls','Personnal fouls drawn'];
+        var data1 = [];
+        for(i=0 ; i<col1.length ; i++){
+            data1[i] = [];
+        }
+        for(j=0 ; j<col1.length ; j++){
+            data1[j][0] = col1[j];
+        }
+        for(k=0 ; k<col1.length ; k++){
+            data1[k][1] = [];
+        }
+        dataset.forEach(function(x) {
+            var v1 = x.Personnal_fouls;
+            var v2 = x.Personnal_fouls_drawn;
+			
+            var rowMax1 = Math.max(v1, v2);
+            var rowMin1 = Math.min(v1, v2);
+
+            data1[0][1].push(v1);
+            data1[1][1].push(v2);
+		 
+            if (rowMax1 > max) max = rowMax1;
+            if (rowMin1 < min) min = rowMin1;	
+        });
+  
+        var chart = d3.box()
+                      .whiskers(iqr(1.5))
+                      .height(height)	
+                      .domain([min, max])
+                      .showLabels(labels);
+                      
+
+        var svg = d3.select("#Centre").append("svg")
+                                   .attr("width", width + margin.left + margin.right)
+                                   .attr("height", height + margin.top + margin.bottom)
+                                   .attr("class", "box")    
+                                   .append("g")
+                                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var x = d3.scale.ordinal()	   
+		.domain( data1.map(function(d) { console.log(d); return d[0] } ) )	    
+		.rangeRoundBands([0 , width], 0.7, 0.3); 		
+
+        var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+        var y = d3.scale.linear()
+		.domain([min, max])
+		.range([height + margin.top, 0 + margin.top]);
+	
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+        svg.selectAll(".box")	   
+        .data(data1)
+        .enter().append("g")
+		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
+        .call(chart.width(x.rangeBand())); 
+	
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 + (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "18px")  
+        .text("Fouls: " + elemID);
+ 
+        svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+		.append("text") // and text1
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .style("font-size", "16px") 
+		  .text("Number of fouls per match");		
+	
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
+        .call(xAxis)
+        .append("text")            
+        .attr("x", (width / 2) )
+        .attr("y",  10 )
+		.attr("dy", ".71em")
+        .style("text-anchor", "middle")
+		.style("font-size", "16px"); 
+        
+
+        // Returns a function to compute the interquartile range.
+        function iqr(k) {
+            return function(d, i) {
+            var q1 = d.quartiles[0],
+                q3 = d.quartiles[2],
+                iqr = (q3 - q1) * k,
+                i = -1,
+                j = d.length;
+            while (d[++i] < q1 - iqr);
+            while (d[--j] > q3 + iqr);
+            return [i, j];
+            };
+        }
+    });
+    
+    //Affichage du boxplot avec les points marqués
+    d3.csv("data/NBA_data.csv", function(error, csv) {
+        var labels = true; // show the text labels beside individual boxplots?
+        var margin = {top: 30, right: 100, bottom: 70, left: 100};
+        var  width = 1500 - margin.left - margin.right;
+        var height = 400 - margin.top - margin.bottom;	
+        var min = Infinity,
+            max = -Infinity;
+        var dataset = [];
+        for (var i = 0; i < csv.length; i++){
+                if (csv[i].Team == elemID){;
+                    dataset.push(csv[i]);
+                }
+        }               
+        var col1 = ['Points','Point differential of the score'];
+        var data1 = [];
+        for(i=0 ; i<col1.length ; i++){
+            data1[i] = [];
+        }
+        for(j=0 ; j<col1.length ; j++){
+            data1[j][0] = col1[j];
+        }
+        for(k=0 ; k<col1.length ; k++){
+            data1[k][1] = [];
+        }
+        dataset.forEach(function(x) {
+            var v1 = Math.floor(x.Points);
+            var v2 = Math.floor(x.Point_differential_of_the_score);
+			
+            var rowMax1 = Math.max(v1, v2);
+            var rowMin1 = Math.min(v1, v2);
+
+            data1[0][1].push(v1);
+            data1[1][1].push(v2);
+		 
+            if (rowMax1 > max) max = rowMax1;
+            if (rowMin1 < min) min = rowMin1;	
+        });
+  
+        var chart = d3.box()
+                      .whiskers(iqr(1.5))
+                      .height(height)	
+                      .domain([min, max])
+                      .showLabels(labels);
+                      
+
+        var svg = d3.select("#Centre").append("svg")
+                                   .attr("width", width + margin.left + margin.right)
+                                   .attr("height", height + margin.top + margin.bottom)
+                                   .attr("class", "box")    
+                                   .append("g")
+                                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var x = d3.scale.ordinal()	   
+		.domain( data1.map(function(d) { console.log(d); return d[0] } ) )	    
+		.rangeRoundBands([0 , width], 0.7, 0.3); 		
+
+        var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+        var y = d3.scale.linear()
+		.domain([min, max])
+		.range([height + margin.top, 0 + margin.top]);
+	
+        var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+        svg.selectAll(".box")	   
+        .data(data1)
+        .enter().append("g")
+		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
+        .call(chart.width(x.rangeBand())); 
+	
+        svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 + (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "18px")  
+        .text("Points: " + elemID);
+ 
+        svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+		.append("text") // and text1
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .style("font-size", "16px") 
+		  .text("Points scored per player per match");		
+	
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
+        .call(xAxis)
+        .append("text")            
+        .attr("x", (width / 2) )
+        .attr("y",  10 )
+		.attr("dy", ".71em")
+        .style("text-anchor", "middle")
+		.style("font-size", "16px"); 
         
 
         // Returns a function to compute the interquartile range.
