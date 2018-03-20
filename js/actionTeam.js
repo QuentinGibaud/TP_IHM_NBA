@@ -871,7 +871,7 @@ function selectTeam(elemID){
         dataset.forEach(function(x) {
             var v1 = x.Off_rebond;
             var v2 = x.Def_rebond;
-            var v3 = x.Total_rebond;
+            var v3 = Math.floor(x.Total_rebond);
 			
             var rowMax1 = Math.max(v1, Math.max(v2,v3));
             var rowMin1 = Math.min(v1, Math.min(v2,v3));
