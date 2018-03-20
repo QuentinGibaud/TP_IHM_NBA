@@ -1,12 +1,4 @@
 function selectPlayer(elemID){
-    /*d3.csv("data/NBA_data.csv", function(data){
-            d3.select("#Centre").selectAll("p")
-                                .data(data)
-                                .enter()
-                                .append("p")
-                                .text(function(d){if(d.Name == elemID){return "Vous avez choisi le joueur " + d.Name + " qui a " + d.Age + " ans !!!" ;}});
-    });*/
-
     
     d3.csv("data/NBA_data.csv", function (error,data) {
         
@@ -23,16 +15,6 @@ function selectPlayer(elemID){
             var thead = table.append('thead')
             var	tbody = table.append('tbody');
             
-            /*
-            d3.select('#Centre').selectAll('table').data([0]).enter().append('table');
-            var table = d3.select('#Centre').select('table');
-
-            table.selectAll('thead').data([0]).enter().append('thead');
-            var thead = table.select('thead');
-
-            table.selectAll('tbody').data([0]).enter().append('tbody');
-            var tbody = table.select('tbody');
-            */
             // append the header row
             thead.append('tr')
                  .selectAll('th')
@@ -46,10 +28,6 @@ function selectPlayer(elemID){
                             .enter()
                             .append('tr');
                             
-            /*var rows = tbody.selectAll('tr')
-                            .data(tbody.data()[0].filter(function(d) { 
-                                                            return d.Salary > 10000 ; 
-                            }));*/
 
             // create a cell in each row for each column
             var cells = rows.selectAll('td')
