@@ -1,5 +1,6 @@
 function selectPlayer(elemID){
     
+    
     d3.csv("data/NBA_data.csv", function (error,data) {
         
         var dataset = [];
@@ -54,9 +55,9 @@ function selectPlayer(elemID){
                            'Free throws attempted','Percent of free throw','Offensive rebond','Defensive rebond','Total rebond','Assits','Turnover','Steals','Blocks','Blocked fields goals attempted',
                            'Personnal fouls','Personnal fouls drawn','Points','Point differential of the score'];
                            
-        var unit = ['-','m','kg','years old','$','-','-','games','minutes',
-                           '-','-','%','-','-','%','-',
-                           '-','%','-','-','-','-','-','-','-','-',
+        var unit = ['-','m','kg','years old','$','-','-','games','minutes/game',
+                           '/game','/game','%','/game','/game','%','/game',
+                           '/game','%','/game','/game','/game','/game','/game','/game','/game','/game',
                            '/game','/game','/game','-'];                   
         
         d3.select("#Centre").select("table").remove();

@@ -1,5 +1,6 @@
 function selectTeam(elemID){
     
+    d3.select("#Centre").selectAll("p").remove();
 	
     //Affichage du boxplot avec les goals
     d3.csv("data/NBA_data.csv", function(error, csv) {

@@ -22,31 +22,33 @@
             <a class="menu" id="player_page" href="player.html">Player</a>
             <a class="menu" id="team_page" href="team.html">Team</a>
         </nav>
-        <div class="navVertical">
-			<div class="blocNavHeaderSearch">Search a Team</div>
-			<div class="blocNavElement">
-                <form action="javascript:searchTeamByName()">
-                    <input type="text" id="nameTeam" /><input type="submit" value="Search" />
-                </form>
-			</div>
+        <div class="contentGlobal">
+            <div class="navVertical">
+                <div class="blocNavHeaderSearch">Search a Team</div>
+                <div class="blocNavElement">
+                    <form action="javascript:searchTeamByName()">
+                        <input type="text" id="nameTeam" /><input type="submit" value="Search" />
+                    </form>
+                </div>
 
-			<div class="blocNavHeaderList">List of Teams</div>
-			<div id="blocNavElementList" class="blocNavElement">
-                <script type="text/javascript">
-                    var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
-                    d3.select("#blocNavElementList").selectAll("p")
-                             .data(dataTeam)
-                             .enter()
-                             .append("p")                            
-                             .text(function(d){return d ;})
-                             .attr("onclick",function(d){return "selectTeam('" + d +"');";})
-                             .style("margin", "0") 
-                             .style("font-size", "15px");
-                </script>
-			</div>
-		</div>
-        <div id="Centre">
-            <p>Here you will find all the informations on your favorite team (well, when you will select one ...) !!!</p>
-		</div>
+                <div class="blocNavHeaderList">List of Teams</div>
+                <div id="blocNavElementList" class="blocNavElement">
+                    <script type="text/javascript">
+                        var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
+                        d3.select("#blocNavElementList").selectAll("p")
+                                .data(dataTeam)
+                                .enter()
+                                .append("p")                            
+                                .text(function(d){return d ;})
+                                .attr("onclick",function(d){return "selectTeam('" + d +"');";})
+                                .style("margin", "0") 
+                                .style("font-size", "15px");
+                    </script>
+                </div>
+            </div>
+            <div id="Centre">
+                <p>Here you will find all the informations on your favorite team (well, when you will select one ...) !!!</p>
+            </div>
+        </div>
     </body>
 </html>

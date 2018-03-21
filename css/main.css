@@ -2,7 +2,7 @@ html, body {
     background: #F5F5F5; font: 18px/1.5 sans-serif;
     width: 100%;
     height: 100%;
-    margin: 0 auto -15px;
+    margin: 0;
     display: block;
 }
 
@@ -88,6 +88,10 @@ nav a:hover {
     margin: 50px 0;
 }
 
+.contentGlobal {
+    display: flex;
+}
+
 .navVertical {
 	margin-left: 0;
 	margin-top: 0;
@@ -95,29 +99,32 @@ nav a:hover {
 	margin-bottom: 0;
 	background-color: #80FFFF;
 	visibility: visible;
-    height: 100%;
 }
 
 .blocNavHeaderSearch {
 	position:relative;
-	background-color: red;
+	background-color: #294AB7;
 	visibility: visible;
     color: white;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .blocNavHeaderList {
 	position:relative;
-	background-color: blue;
+	background-color: #294AB7;
 	visibility: visible;
     color: white;
     text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .blocNavElement {
 	position:relative;
 	color:black;
 	visibility: visible;
+    text-align: center;
 }
 
 .blocNavElement p:hover {
@@ -127,14 +134,13 @@ nav a:hover {
 
 #blocNavElementList{
     background-color: #80FFFF;
+    margin-bottom: 10px;
 }
 
 #Centre {
-    position: absolute;
-	left:250px;
-    top: 300px;
-    width: 88%;
 	visibility: visible;
+    margin: 30 auto 0;
+    flex: 1;
 }
 
 /*table{

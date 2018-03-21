@@ -21,18 +21,19 @@
             <a class="menu" id="player_page" href="player.html">Player</a>
             <a class="menu" id="team_page" href="team.html">Team</a>
         </nav>
-        <div class="navVertical">
-			<div class="blocNavHeaderSearch">Search a Player</div>
-			<div class="blocNavElement">
-                <form action="javascript:searchPlayerByName()">
-                    <input type="text" id="namePlayer" /><input type="submit" value="Search" />
-                </form>
-			</div>
+        <div class="contentGlobal">
+            <div class="navVertical">
+                <div class="blocNavHeaderSearch">Search a Player</div>
+                <div class="blocNavElement">
+                    <form action="javascript:searchPlayerByName()">
+                        <input type="text" id="namePlayer" /><input type="submit" value="Search" />
+                    </form>
+                </div>
 
-			<div class="blocNavHeaderList">List of Players</div>
-			<div id="blocNavElementList" class="blocNavElement">
-                <script type="text/javascript">
-                    d3.csv("data/NBA_data.csv", function(data){
+                <div class="blocNavHeaderList">List of Players</div>
+                <div id="blocNavElementList" class="blocNavElement">
+                    <script type="text/javascript">
+                        d3.csv("data/NBA_data.csv", function(data){
                                                         d3.select("#blocNavElementList").selectAll("p")
                                                           .data(data)
                                                           .enter()
@@ -42,11 +43,12 @@
                                                           .style("margin", "0")  
                                                           .style("font-size", "15px");
                                                     });
-                </script>
-			</div>
-		</div>
-        <div id="Centre">
-            <p>Here you will find all the informations on your favorite player (well, when you will select one ...) !!!</p>
-		</div>
+                    </script>
+                </div>
+            </div>
+            <div id="Centre">
+                <p>Here you will find all the informations on your favorite player (well, when you will select one ...) !!!</p>
+            </div>
+        </div>
     </body>
 </html>
