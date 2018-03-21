@@ -1,17 +1,20 @@
 function searchPlayerByName(){
 
     var elem = document.getElementById('namePlayer');
-    var elemName = elem.value;
+    var elemName1 = elem.value;
+    var elemName = elemName1.toUpperCase();
     var cont = false;
     
     d3.csv("data/NBA_data.csv", function(error, data){
         for(k=0 ; k<data.length ; k++){
-            if(data[k].Name == elemName){
+            var toRun = data[k].Name;
+            if(toRun.toUpperCase() == elemName){
                 cont=true;
+                var name=data[k].Name;
             }
         }
         if(cont){
-            selectPlayer(elemName);
+            selectPlayer(name);
         }else{
             d3.select("#Centre").selectAll("table").remove();
         }
