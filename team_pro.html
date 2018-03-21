@@ -18,16 +18,16 @@
             <h1 class="header-title">NBA is Great : visualize your favorite team</h1>
         </header>
         <nav>
-            <a class="menu" id="home_page" href="index.html">Home</a>
-            <a class="menu" id="player_page" href="player.html">Player</a>
-            <a class="menu" id="team_page" href="team.html">Team</a>
-            <a class="menu" id="fan_index" href="team_pro.html">Pro Mode</a>
+            <a class="menu" id="home_page" href="index_pro.html">Home</a>
+            <a class="menu" id="player_page" href="player_pro.html">Player</a>
+            <a class="menu" id="team_page" href="team_pro.html">Team</a>
+            <a class="menu" id="fan_index" href="team.html">Fan Mode</a>
         </nav>
         <div class="contentGlobal">
             <div class="navVertical">
                 <div class="blocNavHeaderSearch">Search a Team</div>
                 <div class="blocNavElement">
-                    <form action="javascript:searchTeamByName(0)">
+                    <form action="javascript:searchTeamByName(1)">
                         <input type="text" id="nameTeam" /><input type="submit" value="Search" />
                     </form>
                 </div>
@@ -41,7 +41,7 @@
                                 .enter()
                                 .append("p")                            
                                 .text(function(d){return d ;})
-                                .attr("onclick",function(d){return "selectTeam('" + d +"',0);";})
+                                .attr("onclick",function(d){return "selectTeam('" + d +"',1);";})
                                 .style("margin", "0") 
                                 .style("font-size", "15px");
                     </script>
@@ -49,7 +49,7 @@
             </div>
             <div id="Centre">
                 <p>Here you will find all the informations on your favorite team (well, when you will select one ...) !!!</p>
-                <p>You're currently in Fan mode.</p>
+                <p>You're currently in Pro mode.</p>
             </div>
         </div>
     </body>

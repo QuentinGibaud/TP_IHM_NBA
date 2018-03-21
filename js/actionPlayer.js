@@ -1,4 +1,4 @@
-function selectPlayer(elemID){
+function selectPlayer(elemID,pro){
     
     
     d3.csv("data/NBA_data.csv", function (error,data) {
@@ -45,24 +45,49 @@ function selectPlayer(elemID){
         }
 
         // render the table(s)
-        var col = ['Name','Height','Weight','Age','Salary','Team','Position','Games_played','Minutes',
+        
+        //if we are in pro mode
+        var col_pro = ['Name','Height','Weight','Age','Salary','Team','Position','Games_played','Minutes',
                            'Fields_goals_made','Fields_goal_attempted','Percent_Fields_goal_made','Three_pts_FGM','Three_pts_FGA','Percent_Three_pts_FG','Free_throws_made',
                            'Free_throws_attempted','Percent_FT','Off_rebond','Def_rebond','Total_rebond','Assits','Turnover','Steals','Blocks','Blocked_fields_goals_attempted',
                            'Personnal_fouls','Personnal_fouls_drawn','Points','Point_differential_of_the_score'];
                            
-        var lab = ['Name','Height','Weight','Age','Salary','Team','Position','Games played','Minutes',
+        var lab_pro = ['Name','Height','Weight','Age','Salary','Team','Position','Games played','Minutes',
                            'Fields goals made','Fields goal attempted','Percent of fields goal made','Three points made','Three points attempted','Percent of three pts','Free throws made',
                            'Free throws attempted','Percent of free throw','Offensive rebond','Defensive rebond','Total rebond','Assits','Turnover','Steals','Blocks','Blocked fields goals attempted',
                            'Personnal fouls','Personnal fouls drawn','Points','Point differential of the score'];
                            
-        var unit = ['-','m','kg','years old','$','-','-','games','minutes/game',
+        var unit_pro = ['-','m','kg','years old','$','-','-','games','minutes/game',
                            '/game','/game','%','/game','/game','%','/game',
                            '/game','%','/game','/game','/game','/game','/game','/game','/game','/game',
-                           '/game','/game','/game','-'];                   
+                           '/game','/game','/game','-'];
+                           
+        //if we are in fan mode
+        var col_fan = ['Name','Height','Weight','Age','Salary','Team','Position','Games_played','Minutes',
+                           'Fields_goals_made','Three_pts_FGM','Free_throws_made',
+                           'Total_rebond','Assits','Turnover','Steals','Blocks',
+                           'Personnal_fouls','Points'];
+                           
+        var lab_fan = ['Name','Height','Weight','Age','Salary','Team','Position','Games played','Minutes',
+                           'Fields goals made','Three points made','Free throws made',
+                           'Total rebond','Assits','Turnover','Steals','Blocks',
+                           'Personnal fouls','Points'];
+                           
+        var unit_fan = ['-','m','kg','years old','$','-','-','games','minutes/game',
+                           '/game','/game','/game',
+                           '/game','/game','/game','/game','/game',
+                           '/game','/game'];
+                           
         
+        //erase all the previous search
         d3.select("#Centre").select("table").remove();
         
-        tabulate(dataset, col, lab, unit);
+        
+        if(pro == 1){
+            tabulate(dataset, col_pro, lab_pro, unit_pro);
+        }else{
+            tabulate(dataset, col_fan, lab_fan, unit_fan);
+        }
 
     });
 

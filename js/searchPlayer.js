@@ -1,4 +1,4 @@
-function searchPlayerByName(){
+function searchPlayerByName(pro){
 
     var elem = document.getElementById('namePlayer');
     var elemName1 = elem.value;
@@ -14,7 +14,7 @@ function searchPlayerByName(){
             }
         }
         if(cont){
-            selectPlayer(name);
+            selectPlayer(name,pro);
         }else{
             d3.select("#Centre").selectAll("table").remove();
         }

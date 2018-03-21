@@ -17,16 +17,16 @@
             <h1 class="header-title">NBA is Great : visualize your favorite player</h1>
         </header>
         <nav>
-            <a class="menu" id="home_page" href="index.html">Home</a>
-            <a class="menu" id="player_page" href="player.html">Player</a>
-            <a class="menu" id="team_page" href="team.html">Team</a>
-            <a class="menu" id="fan_index" href="player_pro.html">Pro Mode</a>
+            <a class="menu" id="home_page" href="index_pro.html">Home</a>
+            <a class="menu" id="player_page" href="player_pro.html">Player</a>
+            <a class="menu" id="team_page" href="team_pro.html">Team</a>
+            <a class="menu" id="fan_index" href="player.html">Fan Mode</a>
         </nav>
         <div class="contentGlobal">
             <div class="navVertical">
                 <div class="blocNavHeaderSearch">Search a Player</div>
                 <div class="blocNavElement">
-                    <form action="javascript:searchPlayerByName(0)">
+                    <form action="javascript:searchPlayerByName(1)">
                         <input type="text" id="namePlayer" /><input type="submit" value="Search" />
                     </form>
                 </div>
@@ -40,7 +40,7 @@
                                                           .enter()
                                                           .append("p")
                                                           .text(function(d){return d.Name;})
-                                                          .attr("onclick",function(d){return "selectPlayer('" + d.Name +"',0);";})
+                                                          .attr("onclick",function(d){return "selectPlayer('" + d.Name +"',1);";})
                                                           .style("margin", "0")  
                                                           .style("font-size", "15px");
                                                     });
@@ -49,7 +49,7 @@
             </div>
             <div id="Centre">
                 <p>Here you will find all the informations on your favorite player (well, when you will select one ...) !!!</p>
-                <p>You're currently in Fan mode.</p>
+                <p>You're currently in Pro mode.</p>
             </div>
         </div>
     </body>

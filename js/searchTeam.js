@@ -1,4 +1,4 @@
-function searchTeamByName(){
+function searchTeamByName(pro){
 
     var elem = document.getElementById('nameTeam');
     var elemName1 = elem.value;
@@ -14,7 +14,7 @@ function searchTeamByName(){
     }
     
     if(cont){
-        selectTeam(name);
+        selectTeam(name,pro);
     }else{
         d3.select("#Centre").selectAll("svg").remove();
     }
