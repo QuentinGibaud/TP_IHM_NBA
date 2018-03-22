@@ -1,3 +1,11 @@
+/**
+* Script with all the functions called in player.html and player_pro.html
+**/
+
+/**
+* Function addDataPlayerFan() : 
+* return the list of players in fan mode
+**/
 function addDataPlayerFan(){
     d3.csv("data/NBA_data.csv", function(data){
                                                         d3.select("#blocNavElementList").selectAll("p")
@@ -11,6 +19,10 @@ function addDataPlayerFan(){
                                                     });
 }
 
+/**
+* Function addDataPlayerPro() : 
+* return the list of players in pro mode
+**/
 function addDataPlayerPro(){
     d3.csv("data/NBA_data.csv", function(data){
                                                         d3.select("#blocNavElementList").selectAll("p")
@@ -24,12 +36,20 @@ function addDataPlayerPro(){
                                                     });
 }
 
+/**
+* Function selectPlayer(elemID,pro) : 
+* return the data of the selected player
+* param : elemID, the id in html of the player
+* param : pro, 0 if fan mode, 1 if pro mode
+**/
 function selectPlayer(elemID,pro){
     
-    d3.select("#Centre").select("#wrong").remove();
+    //Remove the error message
+    d3.select("#Centre").select("#wrong").remove();    
     
     d3.csv("data/NBA_data.csv", function (error,data) {
         
+        //Get the data of the correct player
         var dataset = [];
         for (var i = 0; i < data.length; i++){
                 if (data[i].Name == elemID){;
@@ -37,14 +57,23 @@ function selectPlayer(elemID,pro){
                 }
         }
 
-        
+        /**
+        * Function tabulate(data, col, lab, uni) :
+        * returns a table with all the data of the player
+        * param : data, the data of the player to put in the table
+        * param : col, the columns of the data you want to display
+        * param : lab, the label you want to be print in the table
+        * param : uni, units of the data
+        * Warning : all the 3 last parameters need to have the same length
+        **/
         function tabulate(data, columns, label, units) {
             
+            //Create and select the structure
             var table = d3.select('#Centre').append('table')
             var thead = table.append('thead')
             var	tbody = table.append('tbody');
             
-            // append the header row
+            //Append the header row
             var contentHead = ['About the player','Value','Units'];
             thead.append('tr')
                  .selectAll('th')
@@ -57,7 +86,7 @@ function selectPlayer(elemID,pro){
                 toAdd.push(data[0][columns[i]]);
             }
 
-            // create a row for each object in the data
+            //Create a row for each object in the data
             var about = tbody.selectAll('tr')
                             .data(columns)
                             .enter()
@@ -71,9 +100,9 @@ function selectPlayer(elemID,pro){
             return table;
         }
 
-        // render the table(s)
+        //Render the table
         
-        //if we are in pro mode
+        //If we are in pro mode
         var col_pro = ['Name','Height','Weight','Age','Salary','Team','Position','Games_played','Minutes',
                            'Fields_goals_made','Fields_goal_attempted','Percent_Fields_goal_made','Three_pts_FGM','Three_pts_FGA','Percent_Three_pts_FG','Free_throws_made',
                            'Free_throws_attempted','Percent_FT','Off_rebond','Def_rebond','Total_rebond','Assits','Turnover','Steals','Blocks','Blocked_fields_goals_attempted',
@@ -89,7 +118,7 @@ function selectPlayer(elemID,pro){
                            '/game','%','/game','/game','/game','/game','/game','/game','/game','/game',
                            '/game','/game','/game','-'];
                            
-        //if we are in fan mode
+        //If we are in fan mode
         var col_fan = ['Name','Height','Weight','Age','Salary','Team','Position','Games_played','Minutes',
                            'Fields_goals_made','Three_pts_FGM','Free_throws_made',
                            'Total_rebond','Assits','Turnover','Steals','Blocks',
@@ -106,10 +135,10 @@ function selectPlayer(elemID,pro){
                            '/game','/game'];
                            
         
-        //erase all the previous search
+        //Erase all the previous search
         d3.select("#Centre").select("table").remove();
         
-        
+        //Print the result
         if(pro == 1){
             tabulate(dataset, col_pro, lab_pro, unit_pro);
         }else{

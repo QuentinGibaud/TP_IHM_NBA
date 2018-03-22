@@ -1,3 +1,11 @@
+/**
+* Script with all the functions called in team.html and team_pro.html
+**/
+
+/**
+* Function addDataTeamFan() : 
+* return the list of teams in fan mode
+**/
 function addDataTeamFan(){
     var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
                         d3.select("#blocNavElementList").selectAll("p")
@@ -10,6 +18,10 @@ function addDataTeamFan(){
                                 .style("font-size", "15px");
 }
 
+/**
+* Function addDataTeamPro() : 
+* return the list of teams in pro mode
+**/
 function addDataTeamPro(){
     var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
                         d3.select("#blocNavElementList").selectAll("p")
@@ -22,13 +34,38 @@ function addDataTeamPro(){
                                 .style("font-size", "15px");
 }
 
+/**
+* Function iqr(k) :
+* return a function to compute the interquartile range
+* param : k, the scale to drawn
+**/
+function iqr(k) {
+    return function(d, i) {
+        var q1 = d.quartiles[0],
+            q3 = d.quartiles[2],
+            iqr = (q3 - q1) * k,
+            i = -1,
+            j = d.length;
+            while (d[++i] < q1 - iqr);
+            while (d[--j] > q3 + iqr);
+            return [i, j];
+    };
+}
+
+/**
+* Function selectTeam(elemID,pro) : 
+* return the data of the selected team
+* param : elemID, the id in html of the team
+* param : pro, 0 if fan mode, 1 if pro mode
+**/
 function selectTeam(elemID,pro){
     
+    //Remove the error message
     d3.select("#Centre").select("#wrong").remove();
-    
+    //Remove all the previous search
     d3.select("#Centre").selectAll("svg").remove();
 	
-    //Affichage du boxplot avec les goals
+    //Print boxplot with goals : different number of data if pro or fan mode activated
     if(pro == 1){    
         d3.csv("data/NBA_data.csv", function(error, csv) {
             var labels = true; // show the text labels beside individual boxplots?
@@ -139,21 +176,6 @@ function selectTeam(elemID,pro){
             .attr("dy", ".71em")
             .style("text-anchor", "middle")
             .style("font-size", "16px"); 
-        
-
-            // Returns a function to compute the interquartile range.
-            function iqr(k) {
-                return function(d, i) {
-                var q1 = d.quartiles[0],
-                    q3 = d.quartiles[2],
-                    iqr = (q3 - q1) * k,
-                    i = -1,
-                    j = d.length;
-                while (d[++i] < q1 - iqr);
-                while (d[--j] > q3 + iqr);
-                return [i, j];
-                };
-            }
         });
     }else{
         d3.csv("data/NBA_data.csv", function(error, csv) {
@@ -247,7 +269,7 @@ function selectTeam(elemID,pro){
             .attr("dy", ".71em")
             .style("text-anchor", "end")
             .style("font-size", "16px") 
-            .text("Number of throws per match played");		
+            .text("Number of throws per player match played");		
 	
             svg.append("g")
             .attr("class", "x axis")
@@ -259,26 +281,11 @@ function selectTeam(elemID,pro){
             .attr("dy", ".71em")
             .style("text-anchor", "middle")
             .style("font-size", "16px"); 
-        
-
-            // Returns a function to compute the interquartile range.
-            function iqr(k) {
-                return function(d, i) {
-                var q1 = d.quartiles[0],
-                    q3 = d.quartiles[2],
-                    iqr = (q3 - q1) * k,
-                    i = -1,
-                    j = d.length;
-                while (d[++i] < q1 - iqr);
-                while (d[--j] > q3 + iqr);
-                return [i, j];
-                };
-            }
         });
     }
     
     
-    //Boxplot avec la donnée Salaire
+    //Boxplot with Salary
     d3.csv("data/NBA_data.csv", function(error, csv) {
 
         var labels = true; // show the text labels beside individual boxplots?
@@ -380,24 +387,9 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px"); 
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
     
-    //Boxplot avec la donnée Age
+    //Boxplot with Age
     d3.csv("data/NBA_data.csv", function(error, csv) {
 
         var labels = true; // show the text labels beside individual boxplots?
@@ -499,24 +491,9 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px"); 
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
     
-    //Boxplot avec la donnée Taille
+    //Boxplot with Height
     d3.csv("data/NBA_data.csv", function(error, csv) {
 
         var labels = true; // show the text labels beside individual boxplots?
@@ -618,24 +595,9 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px");
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
     
-    //Boxplot avec la donnée Poids
+    //Boxplot with Weight
     d3.csv("data/NBA_data.csv", function(error, csv) {
 
         var labels = true; // show the text labels beside individual boxplots?
@@ -737,24 +699,9 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px"); 
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
     
-    //Affichage du boxplot avec les games played
+    //Boxplot with games played
     d3.csv("data/NBA_data.csv", function(error, csv) {
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
@@ -855,24 +802,9 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px"); 
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
     
-    //Affichage du boxplot avec les minutes jouées
+    //Boxplot with minutes played
     d3.csv("data/NBA_data.csv", function(error, csv) {
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
@@ -973,24 +905,9 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px"); 
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
     
-    //Affichage du boxplot avec les rebonds (uniquement pro)
+    //Boxplot with rebonds (for pro only)
     if(pro == 1){
         d3.csv("data/NBA_data.csv", function(error, csv) {
             var labels = true; // show the text labels beside individual boxplots?
@@ -1084,7 +1001,7 @@ function selectTeam(elemID,pro){
             .attr("dy", ".71em")
             .style("text-anchor", "end")
             .style("font-size", "16px") 
-            .text("Number of rebonds successful");		
+            .text("Rebonds successful per player per game");		
 	
             svg.append("g")
             .attr("class", "x axis")
@@ -1096,25 +1013,10 @@ function selectTeam(elemID,pro){
             .attr("dy", ".71em")
             .style("text-anchor", "middle")
             .style("font-size", "16px"); 
-        
-
-            // Returns a function to compute the interquartile range.
-            function iqr(k) {
-                return function(d, i) {
-                var q1 = d.quartiles[0],
-                    q3 = d.quartiles[2],
-                    iqr = (q3 - q1) * k,
-                    i = -1,
-                    j = d.length;
-                while (d[++i] < q1 - iqr);
-                while (d[--j] > q3 + iqr);
-                return [i, j];
-                };
-            }
         });
     }
     
-    //Affichage du boxplot avec les fautes
+    //Boxplot with fouls
     d3.csv("data/NBA_data.csv", function(error, csv) {
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
@@ -1205,7 +1107,7 @@ function selectTeam(elemID,pro){
 		  .attr("dy", ".71em")
 		  .style("text-anchor", "end")
 		  .style("font-size", "16px") 
-		  .text("Number of fouls per match");		
+		  .text("Number of fouls per match per player");		
 	
         svg.append("g")
         .attr("class", "x axis")
@@ -1217,24 +1119,9 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px"); 
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
     
-    //Affichage du boxplot avec les points marqués
+    //Boxplot with points
     d3.csv("data/NBA_data.csv", function(error, csv) {
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
@@ -1337,21 +1224,6 @@ function selectTeam(elemID,pro){
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px"); 
-        
-
-        // Returns a function to compute the interquartile range.
-        function iqr(k) {
-            return function(d, i) {
-            var q1 = d.quartiles[0],
-                q3 = d.quartiles[2],
-                iqr = (q3 - q1) * k,
-                i = -1,
-                j = d.length;
-            while (d[++i] < q1 - iqr);
-            while (d[--j] > q3 + iqr);
-            return [i, j];
-            };
-        }
     });
 
 }
