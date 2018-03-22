@@ -394,7 +394,7 @@ function selectTeam(elemID,pro){
 
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 500 - margin.left - margin.right;
+        var  width = 1500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;
         var min = Infinity,
             max = -Infinity;
@@ -498,7 +498,7 @@ function selectTeam(elemID,pro){
 
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 500 - margin.left - margin.right;
+        var  width = 1500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;
         var min = Infinity,
             max = -Infinity;
@@ -602,7 +602,7 @@ function selectTeam(elemID,pro){
 
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 500 - margin.left - margin.right;
+        var  width = 1500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;
         var min = Infinity,
             max = -Infinity;
@@ -705,7 +705,7 @@ function selectTeam(elemID,pro){
     d3.csv("data/NBA_data.csv", function(error, csv) {
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 750 - margin.left - margin.right;
+        var  width = 1500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;	
         var min = Infinity,
             max = -Infinity;
@@ -727,7 +727,7 @@ function selectTeam(elemID,pro){
             data1[k][1] = [];
         }
         dataset.forEach(function(x) {
-            var v1 = x.Games_played;
+            var v1 = Math.floor(x.Games_played);
 			
             var rowMax1 = Math.max(v1);
             var rowMin1 = Math.min(v1);
@@ -808,7 +808,7 @@ function selectTeam(elemID,pro){
     d3.csv("data/NBA_data.csv", function(error, csv) {
         var labels = true; // show the text labels beside individual boxplots?
         var margin = {top: 30, right: 100, bottom: 70, left: 100};
-        var  width = 750 - margin.left - margin.right;
+        var  width = 1500 - margin.left - margin.right;
         var height = 400 - margin.top - margin.bottom;	
         var min = Infinity,
             max = -Infinity;

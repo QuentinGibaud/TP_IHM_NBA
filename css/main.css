@@ -143,28 +143,6 @@ nav a:hover {
     flex: 1;
 }
 
-/*table{
-    border: 1px solid blue;
-    color: darkcyan;
-    text-align: center;
-    margin: auto;
-}
-
-tr{
-    background-color: white;
-    color: darkcyan;
-}
-
-td{
-    border: 1px solid green;
-    color: darkcyan;
-}
-
-th{
-    background-color: dodgerblue;
-    color: white;
-}*/
-
 table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -224,4 +202,9 @@ th {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+svg{
+    display: block;
+    margin: auto;
 }
