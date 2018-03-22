@@ -1,5 +1,32 @@
+function addDataPlayerFan(){
+    d3.csv("data/NBA_data.csv", function(data){
+                                                        d3.select("#blocNavElementList").selectAll("p")
+                                                          .data(data)
+                                                          .enter()
+                                                          .append("p")
+                                                          .text(function(d){return d.Name;})
+                                                          .attr("onclick",function(d){return "selectPlayer('" + d.Name +"',0);";})
+                                                          .style("margin", "0")  
+                                                          .style("font-size", "15px");
+                                                    });
+}
+
+function addDataPlayerPro(){
+    d3.csv("data/NBA_data.csv", function(data){
+                                                        d3.select("#blocNavElementList").selectAll("p")
+                                                          .data(data)
+                                                          .enter()
+                                                          .append("p")
+                                                          .text(function(d){return d.Name;})
+                                                          .attr("onclick",function(d){return "selectPlayer('" + d.Name +"',1);";})
+                                                          .style("margin", "0")  
+                                                          .style("font-size", "15px");
+                                                    });
+}
+
 function selectPlayer(elemID,pro){
     
+    d3.select("#Centre").select("#wrong").remove();
     
     d3.csv("data/NBA_data.csv", function (error,data) {
         

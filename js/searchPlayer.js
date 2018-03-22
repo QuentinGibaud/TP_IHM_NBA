@@ -1,4 +1,6 @@
 function searchPlayerByName(pro){
+    
+    d3.select("#Centre").select("#wrong").remove();
 
     var elem = document.getElementById('namePlayer');
     var elemName1 = elem.value;
@@ -17,6 +19,7 @@ function searchPlayerByName(pro){
             selectPlayer(name,pro);
         }else{
             d3.select("#Centre").selectAll("table").remove();
+            d3.select("#Centre").append("p").text("Wrong research : please try again").attr("id","wrong");
         }
     });
     

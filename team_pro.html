@@ -35,15 +35,7 @@
                 <div class="blocNavHeaderList">List of Teams</div>
                 <div id="blocNavElementList" class="blocNavElement">
                     <script type="text/javascript">
-                        var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
-                        d3.select("#blocNavElementList").selectAll("p")
-                                .data(dataTeam)
-                                .enter()
-                                .append("p")                            
-                                .text(function(d){return d ;})
-                                .attr("onclick",function(d){return "selectTeam('" + d +"',1);";})
-                                .style("margin", "0") 
-                                .style("font-size", "15px");
+                        addDataTeamPro();
                     </script>
                 </div>
             </div>

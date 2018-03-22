@@ -34,16 +34,7 @@
                 <div class="blocNavHeaderList">List of Players</div>
                 <div id="blocNavElementList" class="blocNavElement">
                     <script type="text/javascript">
-                        d3.csv("data/NBA_data.csv", function(data){
-                                                        d3.select("#blocNavElementList").selectAll("p")
-                                                          .data(data)
-                                                          .enter()
-                                                          .append("p")
-                                                          .text(function(d){return d.Name;})
-                                                          .attr("onclick",function(d){return "selectPlayer('" + d.Name +"',0);";})
-                                                          .style("margin", "0")  
-                                                          .style("font-size", "15px");
-                                                    });
+                        addDataPlayerFan();
                     </script>
                 </div>
             </div>

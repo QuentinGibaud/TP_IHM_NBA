@@ -1,4 +1,6 @@
 function searchTeamByName(pro){
+    
+    d3.select("#Centre").select("#wrong").remove();
 
     var elem = document.getElementById('nameTeam');
     var elemName1 = elem.value;
@@ -17,5 +19,6 @@ function searchTeamByName(pro){
         selectTeam(name,pro);
     }else{
         d3.select("#Centre").selectAll("svg").remove();
+        d3.select("#Centre").append("p").text("Wrong research : please try again").attr("id","wrong");
     }
 }

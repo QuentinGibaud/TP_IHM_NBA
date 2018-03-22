@@ -1,4 +1,30 @@
+function addDataTeamFan(){
+    var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
+                        d3.select("#blocNavElementList").selectAll("p")
+                                .data(dataTeam)
+                                .enter()
+                                .append("p")                            
+                                .text(function(d){return d ;})
+                                .attr("onclick",function(d){return "selectTeam('" + d +"',0);";})
+                                .style("margin", "0") 
+                                .style("font-size", "15px");
+}
+
+function addDataTeamPro(){
+    var dataTeam = ["Miami Heat", "Oklahoma City Thunder", "New York Knicks", "San Antonio Spurs"];
+                        d3.select("#blocNavElementList").selectAll("p")
+                                .data(dataTeam)
+                                .enter()
+                                .append("p")                            
+                                .text(function(d){return d ;})
+                                .attr("onclick",function(d){return "selectTeam('" + d +"',1);";})
+                                .style("margin", "0") 
+                                .style("font-size", "15px");
+}
+
 function selectTeam(elemID,pro){
+    
+    d3.select("#Centre").select("#wrong").remove();
     
     d3.select("#Centre").selectAll("svg").remove();
 	
