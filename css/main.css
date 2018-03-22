@@ -92,6 +92,14 @@ nav a:hover {
     display: flex;
 }
 
+.contentGlobal1 {
+    display: flex;
+}
+
+.contentGlobal2 {
+    display: flex;
+}
+
 .navVertical {
 	margin-left: 0;
 	margin-top: 0;
@@ -138,6 +146,18 @@ nav a:hover {
 }
 
 #Centre {
+	visibility: visible;
+    margin: 30 auto 0;
+    flex: 1;
+}
+
+#Centre1 {
+	visibility: visible;
+    margin: 30 auto 0;
+    flex: 1;
+}
+
+#Centre2 {
 	visibility: visible;
     margin: 30 auto 0;
     flex: 1;

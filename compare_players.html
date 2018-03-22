@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>NBA is Great : compare players</title>
+        <script type="text/javascript" src="d3/d3.v3.js"></script>
+        <script type="text/javascript" src="js/actionPlayerCompare.js"></script>
+        <link rel="icon" type="image/x-icon" href="img/NBA-logo.jpg" />
+        <link rel="stylesheet" href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="img-banner">
+                <img class="logo" src="img/NBA-logo.jpg" alt="NBA Logo"/>
+            </div>
+            <h1 class="header-title">NBA is Great : compare your favorite players</h1>
+        </header>
+        <nav>
+            <a class="menu" id="home_page" href="index.html">Home</a>
+        </nav>
+        <div class="contentGlobal1">
+            <div class="contentGlobal2">
+                <div class="navVertical">
+                    <div class="blocNavHeaderList">Player 1</div>
+                    <div id="blocNavElementList1" class="blocNavElement">
+                        <script type="text/javascript">
+                            addDataPlayerCompare("1");
+                        </script>
+                    </div>
+                </div>
+                <div id="Centre1">
+                    <p>Here you will find all the informations on the first player (well, when you will select one ...) !!!</p>
+                </div>
+            </div>
+            <div class="contentGlobal2">
+                <div class="navVertical">
+                    <div class="blocNavHeaderList">Player 2</div>
+                    <div id="blocNavElementList2" class="blocNavElement">
+                        <script type="text/javascript">
+                            addDataPlayerCompare("2");
+                        </script>
+                    </div>
+                </div>
+                <div id="Centre2">
+                    <p>Here you will find all the informations on the second player (well, when you will select one ...) !!!</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
